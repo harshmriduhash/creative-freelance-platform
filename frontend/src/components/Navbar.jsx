@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { Sparkles, Menu, X } from 'lucide-react';
-import { useState } from 'react';
-import useAuthStore from '../store/authStore';
+import { Link } from "react-router-dom";
+import { Sparkles, Menu, X } from "lucide-react";
+import { useState } from "react";
+import useAuthStore from "../store/authStore";
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -25,14 +25,23 @@ function Navbar() {
 
             {isAuthenticated ? (
               <>
-                <Link to="/dashboard" className="text-gray-700 hover:text-primary-600">
+                <Link
+                  to="/dashboard"
+                  className="text-gray-700 hover:text-primary-600"
+                >
                   Dashboard
                 </Link>
-                <Link to="/ai-assistant" className="text-gray-700 hover:text-primary-600">
+                <Link
+                  to="/ai-assistant"
+                  className="text-gray-700 hover:text-primary-600"
+                >
                   AI Assistant
                 </Link>
-                {user?.role === 'client' && (
-                  <Link to="/create-gig" className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700">
+                {user?.role === "client" && (
+                  <Link
+                    to="/create-gig"
+                    className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700"
+                  >
                     Post a Gig
                   </Link>
                 )}
@@ -45,10 +54,16 @@ function Navbar() {
               </>
             ) : (
               <>
-                <Link to="/login" className="text-gray-700 hover:text-primary-600">
+                <Link
+                  to="/login"
+                  className="text-gray-700 hover:text-primary-600"
+                >
                   Login
                 </Link>
-                <Link to="/register" className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700">
+                <Link
+                  to="/register"
+                  className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700"
+                >
                   Sign Up
                 </Link>
               </>
@@ -60,39 +75,64 @@ function Navbar() {
             className="md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 space-y-3">
-            <Link to="/gigs" className="block text-gray-700 hover:text-primary-600">
+            <Link
+              to="/gigs"
+              className="block text-gray-700 hover:text-primary-600"
+            >
               Browse Gigs
             </Link>
             {isAuthenticated ? (
               <>
-                <Link to="/dashboard" className="block text-gray-700 hover:text-primary-600">
+                <Link
+                  to="/dashboard"
+                  className="block text-gray-700 hover:text-primary-600"
+                >
                   Dashboard
                 </Link>
-                <Link to="/ai-assistant" className="block text-gray-700 hover:text-primary-600">
+                <Link
+                  to="/ai-assistant"
+                  className="block text-gray-700 hover:text-primary-600"
+                >
                   AI Assistant
                 </Link>
-                {user?.role === 'client' && (
-                  <Link to="/create-gig" className="block text-gray-700 hover:text-primary-600">
+                {user?.role === "client" && (
+                  <Link
+                    to="/create-gig"
+                    className="block text-gray-700 hover:text-primary-600"
+                  >
                     Post a Gig
                   </Link>
                 )}
-                <button onClick={logout} className="block w-full text-left text-gray-700 hover:text-primary-600">
+                <button
+                  onClick={logout}
+                  className="block w-full text-left text-gray-700 hover:text-primary-600"
+                >
                   Logout
                 </button>
               </>
             ) : (
               <>
-                <Link to="/login" className="block text-gray-700 hover:text-primary-600">
+                <Link
+                  to="/login"
+                  className="block text-gray-700 hover:text-primary-600"
+                >
                   Login
                 </Link>
-                <Link to="/register" className="block text-gray-700 hover:text-primary-600">
+                <Link
+                  to="/register"
+                  className="block text-gray-700 hover:text-primary-600"
+                >
                   Sign Up
                 </Link>
               </>
