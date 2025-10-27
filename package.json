@@ -1,0 +1,30 @@
+{
+  "name": "creative-freelance-platform",
+  "version": "0.1.0",
+  "description": "AI-Powered Freelance Marketplace for Creative Professionals",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "cd backend && npm run build && cd ../frontend && npm run build",
+    "test": "npm run test --workspaces"
+  },
+  "keywords": [
+    "freelance",
+    "ai",
+    "marketplace",
+    "creative",
+    "upwork"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
