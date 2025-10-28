@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Sparkles, Zap, Shield, TrendingUp } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Sparkles, Zap, Shield, TrendingUp } from "lucide-react";
 
 function Home() {
   return (
@@ -10,8 +10,9 @@ function Home() {
           Where Creativity Meets AI
         </h1>
         <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          The freelance marketplace that supercharges your creative work with AI assistance.
-          Connect with clients, collaborate in real-time, and deliver amazing results.
+          The freelance marketplace that supercharges your creative work with AI
+          assistance. Connect with clients, collaborate in real-time, and
+          deliver amazing results.
         </p>
         <div className="flex justify-center gap-4">
           <Link
@@ -37,7 +38,8 @@ function Home() {
           </div>
           <h3 className="text-xl font-bold mb-2">AI-Powered Creation</h3>
           <p className="text-gray-600">
-            Generate ideas, proposals, and content with cutting-edge AI assistance
+            Generate ideas, proposals, and content with cutting-edge AI
+            assistance
           </p>
         </div>
 
@@ -83,8 +85,12 @@ function Home() {
 
       {/* CTA */}
       <section className="text-center py-12">
-        <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Freelance Journey?</h2>
-        <p className="text-gray-600 mb-8">Join thousands of creatives already using CreativeHub</p>
+        <h2 className="text-3xl font-bold mb-4">
+          Ready to Transform Your Freelance Journey?
+        </h2>
+        <p className="text-gray-600 mb-8">
+          Join thousands of creatives already using CreativeHub
+        </p>
         <Link
           to="/register"
           className="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 inline-block"
