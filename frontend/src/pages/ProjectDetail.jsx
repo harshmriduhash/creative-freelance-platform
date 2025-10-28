@@ -1,20 +1,27 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import {
-  Calendar, DollarSign, User, CheckCircle, Clock,
-  MessageCircle, Upload, Download, Star
-} from 'lucide-react';
-import { projectsAPI } from '../utils/api';
-import useAuthStore from '../store/authStore';
+  Calendar,
+  DollarSign,
+  User,
+  CheckCircle,
+  Clock,
+  MessageCircle,
+  Upload,
+  Download,
+  Star,
+} from "lucide-react";
+import { projectsAPI } from "../utils/api";
+import useAuthStore from "../store/authStore";
 
 function ProjectDetail() {
   const { id } = useParams();
   const { user } = useAuthStore();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState('');
-  const [reviewData, setReviewData] = useState({ rating: 5, comment: '' });
+  const [message, setMessage] = useState("");
+  const [reviewData, setReviewData] = useState({ rating: 5, comment: "" });
   const [showReviewForm, setShowReviewForm] = useState(false);
 
   useEffect(() => {
@@ -26,21 +33,21 @@ function ProjectDetail() {
       const response = await projectsAPI.getById(id);
       setProject(response.data.project);
     } catch (error) {
-      toast.error('Failed to load project');
+      toast.error("Failed to load project");
     } finally {
       setLoading(false);
     }
   };
 
   const handleCompleteProject = async () => {
-    if (!window.confirm('Mark this project as complete?')) return;
+    if (!window.confirm("Mark this project as complete?")) return;
 
     try {
       await projectsAPI.complete(id);
-      toast.success('Project marked as complete!');
+      toast.success("Project marked as complete!");
       fetchProject();
     } catch (error) {
-      toast.error(error.response?.data?.error || 'Failed to complete project');
+      toast.error(error.response?.data?.error || "Failed to complete project");
     }
   };
 
@@ -48,11 +55,11 @@ function ProjectDetail() {
     e.preventDefault();
     try {
       await projectsAPI.submitReview(id, reviewData);
-      toast.success('Review submitted!');
+      toast.success("Review submitted!");
       setShowReviewForm(false);
       fetchProject();
     } catch (error) {
-      toast.error(error.response?.data?.error || 'Failed to submit review');
+      toast.error(error.response?.data?.error || "Failed to submit review");
     }
   };
 
@@ -66,31 +73,31 @@ function ProjectDetail() {
 
   const isClient = user?.id === project.client?._id;
   const isFreelancer = user?.id === project.freelancer?._id;
-  const canReview = project.status === 'completed';
+  const canReview = project.status === "completed";
   const hasReviewed = isClient
     ? project.review?.clientReview
     : project.review?.freelancerReview;
 
   const getStatusColor = (status) => {
     const colors = {
-      active: 'bg-blue-100 text-blue-800',
-      completed: 'bg-green-100 text-green-800',
-      cancelled: 'bg-red-100 text-red-800',
-      disputed: 'bg-yellow-100 text-yellow-800',
-      'in-review': 'bg-purple-100 text-purple-800',
+      active: "bg-blue-100 text-blue-800",
+      completed: "bg-green-100 text-green-800",
+      cancelled: "bg-red-100 text-red-800",
+      disputed: "bg-yellow-100 text-yellow-800",
+      "in-review": "bg-purple-100 text-purple-800",
     };
-    return colors[status] || 'bg-gray-100 text-gray-800';
+    return colors[status] || "bg-gray-100 text-gray-800";
   };
 
   const getMilestoneStatusColor = (status) => {
     const colors = {
-      pending: 'text-gray-500',
-      'in-progress': 'text-blue-500',
-      submitted: 'text-purple-500',
-      approved: 'text-green-500',
-      rejected: 'text-red-500',
+      pending: "text-gray-500",
+      "in-progress": "text-blue-500",
+      submitted: "text-purple-500",
+      approved: "text-green-500",
+      rejected: "text-red-500",
     };
-    return colors[status] || 'text-gray-500';
+    return colors[status] || "text-gray-500";
   };
 
   return (
@@ -102,7 +109,11 @@ function ProjectDetail() {
             <h1 className="text-3xl font-bold mb-2">{project.title}</h1>
             <p className="text-gray-600">{project.description}</p>
           </div>
-          <span className={`px-4 py-2 rounded-full font-medium ${getStatusColor(project.status)}`}>
+          <span
+            className={`px-4 py-2 rounded-full font-medium ${getStatusColor(
+              project.status
+            )}`}
+          >
             {project.status}
           </span>
         </div>
@@ -131,7 +142,8 @@ function ProjectDetail() {
                 to={`/profile/${project.freelancer._id}`}
                 className="font-medium text-primary-600 hover:underline"
               >
-                {project.freelancer.profile?.displayName || project.freelancer.email}
+                {project.freelancer.profile?.displayName ||
+                  project.freelancer.email}
               </Link>
             </div>
           </div>
@@ -144,7 +156,9 @@ function ProjectDetail() {
               <div className="font-medium text-2xl text-green-600">
                 ${project.budget?.amount}
               </div>
-              <div className="text-xs text-gray-500">{project.budget?.type}</div>
+              <div className="text-xs text-gray-500">
+                {project.budget?.type}
+              </div>
             </div>
           </div>
 
@@ -156,14 +170,14 @@ function ProjectDetail() {
               <div className="font-medium">
                 {project.timeline?.estimatedHours
                   ? `${project.timeline.estimatedHours} hours estimated`
-                  : 'No timeline set'}
+                  : "No timeline set"}
               </div>
             </div>
           </div>
         </div>
 
         {/* Actions */}
-        {isClient && project.status === 'active' && (
+        {isClient && project.status === "active" && (
           <div className="mt-6 pt-6 border-t">
             <button
               onClick={handleCompleteProject}
@@ -184,9 +198,17 @@ function ProjectDetail() {
               <div key={idx} className="border rounded-lg p-4">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="font-bold text-lg">{milestone.title}</h3>
-                  <span className={`flex items-center gap-1 font-medium ${getMilestoneStatusColor(milestone.status)}`}>
-                    {milestone.status === 'approved' && <CheckCircle className="w-4 h-4" />}
-                    {milestone.status === 'in-progress' && <Clock className="w-4 h-4" />}
+                  <span
+                    className={`flex items-center gap-1 font-medium ${getMilestoneStatusColor(
+                      milestone.status
+                    )}`}
+                  >
+                    {milestone.status === "approved" && (
+                      <CheckCircle className="w-4 h-4" />
+                    )}
+                    {milestone.status === "in-progress" && (
+                      <Clock className="w-4 h-4" />
+                    )}
                     {milestone.status}
                   </span>
                 </div>
@@ -202,11 +224,12 @@ function ProjectDetail() {
                       </span>
                     )}
                   </div>
-                  {milestone.deliverables && milestone.deliverables.length > 0 && (
-                    <div className="text-primary-600">
-                      {milestone.deliverables.length} file(s) attached
-                    </div>
-                  )}
+                  {milestone.deliverables &&
+                    milestone.deliverables.length > 0 && (
+                      <div className="text-primary-600">
+                        {milestone.deliverables.length} file(s) attached
+                      </div>
+                    )}
                 </div>
               </div>
             ))}
@@ -221,19 +244,19 @@ function ProjectDetail() {
           <div className="bg-blue-50 p-4 rounded-lg">
             <div className="text-sm text-gray-600">Escrow Amount</div>
             <div className="text-2xl font-bold text-blue-600">
-              ${project.payment?.escrowAmount?.toFixed(2) || '0.00'}
+              ${project.payment?.escrowAmount?.toFixed(2) || "0.00"}
             </div>
           </div>
           <div className="bg-green-50 p-4 rounded-lg">
             <div className="text-sm text-gray-600">Paid Amount</div>
             <div className="text-2xl font-bold text-green-600">
-              ${project.payment?.paidAmount?.toFixed(2) || '0.00'}
+              ${project.payment?.paidAmount?.toFixed(2) || "0.00"}
             </div>
           </div>
           <div className="bg-purple-50 p-4 rounded-lg">
             <div className="text-sm text-gray-600">Freelancer Earnings</div>
             <div className="text-2xl font-bold text-purple-600">
-              ${project.payment?.freelancerEarnings?.toFixed(2) || '0.00'}
+              ${project.payment?.freelancerEarnings?.toFixed(2) || "0.00"}
             </div>
           </div>
         </div>
@@ -255,8 +278,8 @@ function ProjectDetail() {
                       key={i}
                       className={`w-4 h-4 ${
                         i < project.review.clientReview.rating
-                          ? 'fill-yellow-400 text-yellow-400'
-                          : 'text-gray-300'
+                          ? "fill-yellow-400 text-yellow-400"
+                          : "text-gray-300"
                       }`}
                     />
                   ))}
@@ -264,7 +287,9 @@ function ProjectDetail() {
                     {project.review.clientReview.rating}/5
                   </span>
                 </div>
-                <p className="text-gray-700">{project.review.clientReview.comment}</p>
+                <p className="text-gray-700">
+                  {project.review.clientReview.comment}
+                </p>
               </div>
             )}
 
@@ -277,8 +302,8 @@ function ProjectDetail() {
                       key={i}
                       className={`w-4 h-4 ${
                         i < project.review.freelancerReview.rating
-                          ? 'fill-yellow-400 text-yellow-400'
-                          : 'text-gray-300'
+                          ? "fill-yellow-400 text-yellow-400"
+                          : "text-gray-300"
                       }`}
                     />
                   ))}
@@ -286,7 +311,9 @@ function ProjectDetail() {
                     {project.review.freelancerReview.rating}/5
                   </span>
                 </div>
-                <p className="text-gray-700">{project.review.freelancerReview.comment}</p>
+                <p className="text-gray-700">
+                  {project.review.freelancerReview.comment}
+                </p>
               </div>
             )}
           </div>
@@ -304,20 +331,24 @@ function ProjectDetail() {
               ) : (
                 <form onSubmit={handleSubmitReview} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Rating</label>
+                    <label className="block text-sm font-medium mb-2">
+                      Rating
+                    </label>
                     <div className="flex gap-2">
                       {[1, 2, 3, 4, 5].map((rating) => (
                         <button
                           key={rating}
                           type="button"
-                          onClick={() => setReviewData({ ...reviewData, rating })}
+                          onClick={() =>
+                            setReviewData({ ...reviewData, rating })
+                          }
                           className="focus:outline-none"
                         >
                           <Star
                             className={`w-8 h-8 ${
                               rating <= reviewData.rating
-                                ? 'fill-yellow-400 text-yellow-400'
-                                : 'text-gray-300'
+                                ? "fill-yellow-400 text-yellow-400"
+                                : "text-gray-300"
                             }`}
                           />
                         </button>
@@ -326,13 +357,20 @@ function ProjectDetail() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2">Comment</label>
+                    <label className="block text-sm font-medium mb-2">
+                      Comment
+                    </label>
                     <textarea
                       required
                       rows={4}
                       className="w-full px-4 py-2 border rounded-lg"
                       value={reviewData.comment}
-                      onChange={(e) => setReviewData({ ...reviewData, comment: e.target.value })}
+                      onChange={(e) =>
+                        setReviewData({
+                          ...reviewData,
+                          comment: e.target.value,
+                        })
+                      }
                       placeholder="Share your experience..."
                     />
                   </div>
@@ -387,10 +425,14 @@ function ProjectDetail() {
       {/* Files */}
       <div className="bg-white rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold mb-4">Shared Files</h2>
-        {project.collaboration?.sharedFiles && project.collaboration.sharedFiles.length > 0 ? (
+        {project.collaboration?.sharedFiles &&
+        project.collaboration.sharedFiles.length > 0 ? (
           <div className="space-y-2">
             {project.collaboration.sharedFiles.map((file, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
+              <div
+                key={idx}
+                className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50"
+              >
                 <div className="flex items-center gap-3">
                   <Download className="w-5 h-5 text-gray-400" />
                   <div>
