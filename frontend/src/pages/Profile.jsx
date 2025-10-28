@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
-import { Star, MapPin, Briefcase, Edit, Mail } from 'lucide-react';
-import { usersAPI } from '../utils/api';
-import useAuthStore from '../store/authStore';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { Star, MapPin, Briefcase, Edit, Mail } from "lucide-react";
+import { usersAPI } from "../utils/api";
+import useAuthStore from "../store/authStore";
 
 function Profile() {
   const { id } = useParams();
@@ -25,7 +25,7 @@ function Profile() {
       setUser(response.data.user);
       setPortfolio(response.data.user.portfolio || []);
     } catch (error) {
-      toast.error('Failed to load profile');
+      toast.error("Failed to load profile");
     } finally {
       setLoading(false);
     }
@@ -45,8 +45,8 @@ function Profile() {
         key={i}
         className={`w-5 h-5 ${
           i < Math.floor(rating)
-            ? 'fill-yellow-400 text-yellow-400'
-            : 'text-gray-300'
+            ? "fill-yellow-400 text-yellow-400"
+            : "text-gray-300"
         }`}
       />
     ));
@@ -111,15 +111,17 @@ function Profile() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
             <div className="bg-gray-50 p-4 rounded-lg">
               <div className="text-2xl font-bold text-primary-600">
-                {user.rating?.average?.toFixed(1) || '0.0'}
+                {user.rating?.average?.toFixed(1) || "0.0"}
               </div>
               <div className="text-sm text-gray-600">Rating</div>
-              <div className="flex gap-1 mt-1">{renderStars(user.rating?.average || 0)}</div>
+              <div className="flex gap-1 mt-1">
+                {renderStars(user.rating?.average || 0)}
+              </div>
             </div>
 
             <div className="bg-gray-50 p-4 rounded-lg">
               <div className="text-2xl font-bold text-green-600">
-                ${user.totalEarnings?.toFixed(2) || '0.00'}
+                ${user.totalEarnings?.toFixed(2) || "0.00"}
               </div>
               <div className="text-sm text-gray-600">Total Earned</div>
             </div>
@@ -145,7 +147,9 @@ function Profile() {
       <div className="bg-white rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold mb-4">About</h2>
         {user.profile?.bio ? (
-          <p className="text-gray-700 whitespace-pre-wrap">{user.profile.bio}</p>
+          <p className="text-gray-700 whitespace-pre-wrap">
+            {user.profile.bio}
+          </p>
         ) : (
           <p className="text-gray-500 italic">No bio provided yet.</p>
         )}
@@ -174,7 +178,10 @@ function Profile() {
         {portfolio.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {portfolio.map((item, idx) => (
-              <div key={idx} className="border rounded-lg overflow-hidden hover:shadow-lg transition">
+              <div
+                key={idx}
+                className="border rounded-lg overflow-hidden hover:shadow-lg transition"
+              >
                 {item.images && item.images[0] && (
                   <img
                     src={item.images[0]}
@@ -184,7 +191,9 @@ function Profile() {
                 )}
                 <div className="p-4">
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{item.description}</p>
+                  <p className="text-gray-600 text-sm mb-3">
+                    {item.description}
+                  </p>
                   {item.aiAssisted && (
                     <span className="inline-block bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded">
                       AI-Assisted
@@ -210,10 +219,12 @@ function Profile() {
       </div>
 
       {/* Hourly Rate (if freelancer) */}
-      {user.role === 'freelancer' && user.hourlyRate && (
+      {user.role === "freelancer" && user.hourlyRate && (
         <div className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl font-bold mb-2">Hourly Rate</h2>
-          <p className="text-3xl font-bold text-green-600">${user.hourlyRate}/hr</p>
+          <p className="text-3xl font-bold text-green-600">
+            ${user.hourlyRate}/hr
+          </p>
         </div>
       )}
 
@@ -222,7 +233,7 @@ function Profile() {
         <div className="bg-white rounded-lg shadow-md p-6">
           <button className="w-full bg-primary-600 text-white py-3 rounded-lg hover:bg-primary-700 font-semibold flex items-center justify-center gap-2">
             <Mail className="w-5 h-5" />
-            Contact {user.profile?.firstName || 'User'}
+            Contact {user.profile?.firstName || "User"}
           </button>
         </div>
       )}
