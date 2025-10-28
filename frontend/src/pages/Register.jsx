@@ -1,19 +1,19 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
-import useAuthStore from '../store/authStore';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import useAuthStore from "../store/authStore";
 
 function Register() {
   const navigate = useNavigate();
   const { register } = useAuthStore();
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    role: 'freelancer',
+    email: "",
+    password: "",
+    role: "freelancer",
     profile: {
-      firstName: '',
-      lastName: ''
-    }
+      firstName: "",
+      lastName: "",
+    },
   });
   const [loading, setLoading] = useState(false);
 
@@ -23,10 +23,10 @@ function Register() {
 
     try {
       await register(formData);
-      toast.success('Registration successful!');
-      navigate('/dashboard');
+      toast.success("Registration successful!");
+      navigate("/dashboard");
     } catch (error) {
-      toast.error(error.response?.data?.error || 'Registration failed');
+      toast.error(error.response?.data?.error || "Registration failed");
     } finally {
       setLoading(false);
     }
@@ -40,30 +40,38 @@ function Register() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-2">First Name</label>
+              <label className="block text-sm font-medium mb-2">
+                First Name
+              </label>
               <input
                 type="text"
                 required
                 className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 value={formData.profile.firstName}
-                onChange={(e) => setFormData({
-                  ...formData,
-                  profile: { ...formData.profile, firstName: e.target.value }
-                })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    profile: { ...formData.profile, firstName: e.target.value },
+                  })
+                }
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Last Name</label>
+              <label className="block text-sm font-medium mb-2">
+                Last Name
+              </label>
               <input
                 type="text"
                 required
                 className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 value={formData.profile.lastName}
-                onChange={(e) => setFormData({
-                  ...formData,
-                  profile: { ...formData.profile, lastName: e.target.value }
-                })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    profile: { ...formData.profile, lastName: e.target.value },
+                  })
+                }
               />
             </div>
           </div>
@@ -75,7 +83,9 @@ function Register() {
               required
               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
             />
           </div>
 
@@ -87,7 +97,9 @@ function Register() {
               minLength={6}
               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
             />
           </div>
 
@@ -96,7 +108,9 @@ function Register() {
             <select
               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               value={formData.role}
-              onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, role: e.target.value })
+              }
             >
               <option value="freelancer">Work as a Freelancer</option>
               <option value="client">Hire Freelancers</option>
@@ -108,12 +122,12 @@ function Register() {
             disabled={loading}
             className="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 disabled:bg-gray-400"
           >
-            {loading ? 'Creating account...' : 'Create Account'}
+            {loading ? "Creating account..." : "Create Account"}
           </button>
         </form>
 
         <p className="text-center mt-4 text-gray-600">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link to="/login" className="text-primary-600 hover:underline">
             Login
           </Link>
