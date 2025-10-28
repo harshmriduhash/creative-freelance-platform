@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
-import useAuthStore from '../store/authStore';
-import { gigsAPI, projectsAPI } from '../utils/api';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import useAuthStore from "../store/authStore";
+import { gigsAPI, projectsAPI } from "../utils/api";
 
 function Dashboard() {
   const { user } = useAuthStore();
@@ -18,15 +18,15 @@ function Dashboard() {
     try {
       const [projectsRes, gigsRes] = await Promise.all([
         projectsAPI.getAll(),
-        gigsAPI.getAll({ client: user?.id })
+        gigsAPI.getAll({ client: user?.id }),
       ]);
 
       setProjects(projectsRes.data.projects || []);
-      if (user?.role === 'client') {
+      if (user?.role === "client") {
         setMyGigs(gigsRes.data.gigs || []);
       }
     } catch (error) {
-      toast.error('Failed to load dashboard data');
+      toast.error("Failed to load dashboard data");
     } finally {
       setLoading(false);
     }
@@ -43,24 +43,32 @@ function Dashboard() {
           Welcome back, {user?.profile?.firstName || user?.email}!
         </h1>
         <p className="text-gray-600">
-          {user?.role === 'freelancer' ? 'Find your next project' : 'Manage your gigs and projects'}
+          {user?.role === "freelancer"
+            ? "Find your next project"
+            : "Manage your gigs and projects"}
         </p>
       </div>
 
       {/* Stats */}
       <div className="grid md:grid-cols-3 gap-6">
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <div className="text-3xl font-bold text-primary-600">{projects.length}</div>
+          <div className="text-3xl font-bold text-primary-600">
+            {projects.length}
+          </div>
           <div className="text-gray-600">Active Projects</div>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <div className="text-3xl font-bold text-green-600">${user?.balance?.toFixed(2) || '0.00'}</div>
+          <div className="text-3xl font-bold text-green-600">
+            ${user?.balance?.toFixed(2) || "0.00"}
+          </div>
           <div className="text-gray-600">Available Balance</div>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <div className="text-3xl font-bold text-orange-600">{user?.completedProjects || 0}</div>
+          <div className="text-3xl font-bold text-orange-600">
+            {user?.completedProjects || 0}
+          </div>
           <div className="text-gray-600">Completed Projects</div>
         </div>
       </div>
@@ -81,7 +89,8 @@ function Dashboard() {
                   <span className="font-medium">Status:</span> {project.status}
                 </div>
                 <div className="text-sm text-gray-600">
-                  <span className="font-medium">Budget:</span> ${project.budget?.amount}
+                  <span className="font-medium">Budget:</span> $
+                  {project.budget?.amount}
                 </div>
               </Link>
             ))}
@@ -92,7 +101,7 @@ function Dashboard() {
       </div>
 
       {/* My Gigs (for clients) */}
-      {user?.role === 'client' && (
+      {user?.role === "client" && (
         <div className="bg-white p-6 rounded-lg shadow-md">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-bold">My Gigs</h2>
@@ -117,7 +126,8 @@ function Dashboard() {
                     <span className="font-medium">Status:</span> {gig.status}
                   </div>
                   <div className="text-sm text-gray-600">
-                    <span className="font-medium">Bids:</span> {gig.bids?.length || 0}
+                    <span className="font-medium">Bids:</span>{" "}
+                    {gig.bids?.length || 0}
                   </div>
                 </Link>
               ))}
