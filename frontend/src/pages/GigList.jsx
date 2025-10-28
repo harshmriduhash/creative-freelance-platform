@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
-import { gigsAPI } from '../utils/api';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { gigsAPI } from "../utils/api";
 
 function GigList() {
   const [gigs, setGigs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
-    category: '',
-    search: ''
+    category: "",
+    search: "",
   });
 
   useEffect(() => {
@@ -20,13 +20,21 @@ function GigList() {
       const response = await gigsAPI.getAll(filters);
       setGigs(response.data.gigs);
     } catch (error) {
-      toast.error('Failed to load gigs');
+      toast.error("Failed to load gigs");
     } finally {
       setLoading(false);
     }
   };
 
-  const categories = ['design', 'writing', 'music', 'video', 'photography', 'marketing', 'development'];
+  const categories = [
+    "design",
+    "writing",
+    "music",
+    "video",
+    "photography",
+    "marketing",
+    "development",
+  ];
 
   return (
     <div className="space-y-6">
@@ -48,7 +56,9 @@ function GigList() {
         >
           <option value="">All Categories</option>
           {categories.map((cat) => (
-            <option key={cat} value={cat}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</option>
+            <option key={cat} value={cat}>
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </option>
           ))}
         </select>
       </div>
@@ -64,14 +74,20 @@ function GigList() {
               to={`/gigs/${gig._id}`}
               className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition"
             >
-              <div className="text-sm text-primary-600 font-medium mb-2">{gig.category}</div>
+              <div className="text-sm text-primary-600 font-medium mb-2">
+                {gig.category}
+              </div>
               <h3 className="text-xl font-bold mb-2">{gig.title}</h3>
-              <p className="text-gray-600 mb-4 line-clamp-2">{gig.description}</p>
+              <p className="text-gray-600 mb-4 line-clamp-2">
+                {gig.description}
+              </p>
               <div className="flex justify-between items-center">
                 <div className="text-lg font-bold text-green-600">
                   ${gig.budget?.min} - ${gig.budget?.max}
                 </div>
-                <div className="text-sm text-gray-500">{gig.bids?.length || 0} bids</div>
+                <div className="text-sm text-gray-500">
+                  {gig.bids?.length || 0} bids
+                </div>
               </div>
             </Link>
           ))}
