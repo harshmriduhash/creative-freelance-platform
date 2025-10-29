@@ -1,6 +1,6 @@
-const { validationResult } = require('express-validator');
-const User = require('../models/User');
-const { generateToken } = require('../middleware/auth');
+const { validationResult } = require("express-validator");
+const User = require("../models/User");
+const { generateToken } = require("../middleware/auth");
 
 // @desc    Register user
 // @route   POST /api/auth/register
@@ -17,15 +17,15 @@ exports.register = async (req, res) => {
     // Check if user exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ error: 'User already exists' });
+      return res.status(400).json({ error: "User already exists" });
     }
 
     // Create user
     const user = await User.create({
       email,
       password,
-      role: role || 'freelancer',
-      profile
+      role: role || "freelancer",
+      profile,
     });
 
     // Generate token
@@ -38,8 +38,8 @@ exports.register = async (req, res) => {
         id: user._id,
         email: user.email,
         role: user.role,
-        profile: user.profile
-      }
+        profile: user.profile,
+      },
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -59,15 +59,15 @@ exports.login = async (req, res) => {
     const { email, password } = req.body;
 
     // Find user with password field
-    const user = await User.findOne({ email }).select('+password');
+    const user = await User.findOne({ email }).select("+password");
     if (!user) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
     // Check password
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
     // Update last login
@@ -85,8 +85,8 @@ exports.login = async (req, res) => {
         email: user.email,
         role: user.role,
         profile: user.profile,
-        subscription: user.subscription
-      }
+        subscription: user.subscription,
+      },
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -114,12 +114,12 @@ exports.updateProfile = async (req, res) => {
       profile: req.body.profile,
       skills: req.body.skills,
       categories: req.body.categories,
-      hourlyRate: req.body.hourlyRate
+      hourlyRate: req.body.hourlyRate,
     };
 
     const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {
       new: true,
-      runValidators: true
+      runValidators: true,
     });
 
     res.json({ success: true, user });
@@ -133,12 +133,12 @@ exports.updateProfile = async (req, res) => {
 // @access  Private
 exports.updatePassword = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('+password');
+    const user = await User.findById(req.user.id).select("+password");
 
     // Check current password
     const isMatch = await user.comparePassword(req.body.currentPassword);
     if (!isMatch) {
-      return res.status(401).json({ error: 'Current password is incorrect' });
+      return res.status(401).json({ error: "Current password is incorrect" });
     }
 
     user.password = req.body.newPassword;
@@ -156,12 +156,12 @@ exports.updatePassword = async (req, res) => {
 // @route   POST /api/auth/forgot-password
 // @access  Public
 exports.forgotPassword = async (req, res) => {
-  res.status(501).json({ message: 'Feature not implemented yet' });
+  res.status(501).json({ message: "Feature not implemented yet" });
 };
 
 // @desc    Reset password (placeholder)
 // @route   PUT /api/auth/reset-password/:resetToken
 // @access  Public
 exports.resetPassword = async (req, res) => {
-  res.status(501).json({ message: 'Feature not implemented yet' });
+  res.status(501).json({ message: "Feature not implemented yet" });
 };
