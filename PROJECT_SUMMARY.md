@@ -15,7 +15,7 @@ A comprehensive platform connecting creative professionals (designers, writers, 
 - ✅ JWT-based authentication system
 - ✅ 4 comprehensive database models (User, Gig, Project, Bid)
 - ✅ Real-time capabilities with Socket.io
-- ✅ Stripe payment integration (15% commission)
+- ✅ Stripe payment integration (16% commission)
 - ✅ AI integration (Claude & OpenAI APIs)
 - ✅ Security: Helmet, CORS, rate limiting
 - ✅ Error handling middleware
