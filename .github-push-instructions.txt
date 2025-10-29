@@ -62,4 +62,4 @@ Commits to be pushed:
 5. Complete MVP: Add Profile, ProjectDetail & File Upload
 
 After pushing, your repo will be live at:
-https://github.com/YOUR_USERNAME/creative-freelance-platform
+https://github.com/Harshmriduhash/creative-freelance-platform
