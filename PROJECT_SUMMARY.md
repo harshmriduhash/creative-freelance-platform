@@ -253,7 +253,7 @@ All key documentation is in place:
 ## 💼 Monetization Strategy
 
 1. **Commission:** 15% on all transactions (configured in Stripe)
-2. **Premium Subscriptions:** $9.99/month for unlimited AI + perks
+2. **Premium Subscriptions:** $10/month for unlimited AI + perks
 3. **Ads:** Sponsored tools/integrations (future)
 
 **Break-even:** ~$200/month server costs
