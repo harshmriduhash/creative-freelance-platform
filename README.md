@@ -1,4 +1,4 @@
-# Creative Freelance
+# Creative Freelanc
 
 AI-Powered Freelance Marketplace for Creative Professionals (Upwork meets Midjourney)
 
