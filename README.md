@@ -1,6 +1,6 @@
 # 
 
-AI-Powered Freelance Marketplace for Creative Professionals Upw
+AI-Powered Freelance Marketplace for Creative Professionals Up
 
 ## Overview
 A comprehensive platform connecting creative professionals with clients through AI-enhanced workflows. Features human-AI hybrid collaboration for designers, writers, musicians, and artists.
