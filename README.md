@@ -1,6 +1,6 @@
 
 ## Overview
-A comprehensive platform connecting creative professionals with clients through AI-enhanced workflows.  human-AI hybrid collaboration for designers, writers, musicians, and artists
+A comprehensive platform  creative professionals with clients through AI-enhanced workflows.  human-AI hybrid collaboration for designers, writers, musicians, and artists
 
 ## Architecture
 - **Backend**: Node.js/Express + MongoDB
