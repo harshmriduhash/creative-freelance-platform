@@ -5,8 +5,7 @@ A comprehensive platform  creative professionals with clients through AI-enhance
 - **Backend**: Node.js/Express + MongoDB
 - **Web Frontend**: React + Tailwind CSS
 - **Mobile**: Android (Kotlin) + iOS
-- **AI Integration**: Claude API + OpenAI
-- **Payments**:  
+- **AI Integration**: Claude API + OpenAI  
 
 ## 
 - User authentication (OAuth + Email)
