@@ -7,7 +7,7 @@ A comprehensive platform  creative professionals with clients through AI-enhance
 - **Mobile**: Android (Kotlin) + iOS
 - **AI Integration**: Claude API + OpenAI
 - **Payments**: Stripe
-- **Real-time**: Socket.io
+- **Real-time**: 
 
 ## Features
 - User authentication (OAuth + Email)
