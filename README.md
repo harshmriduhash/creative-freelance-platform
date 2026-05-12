@@ -9,7 +9,7 @@ A comprehensive platform  creative professionals with clients through AI-enhance
 - **Payments**: 
 - **Real-time**: 
 
-## Features
+## 
 - User authentication (OAuth + Email)
 - AI-assisted content generation
 - Real-time collaboration & chat
