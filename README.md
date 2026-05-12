@@ -6,8 +6,7 @@ A comprehensive platform  creative professionals with clients through AI-enhance
 - **Web Frontend**: React + Tailwind CSS
 - **Mobile**: Android (Kotlin) + iOS
 - **AI Integration**: Claude API + OpenAI
-- **Payments**: 
-- **Real-time**: 
+- **Payments**:  
 
 ## 
 - User authentication (OAuth + Email)
