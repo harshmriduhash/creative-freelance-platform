@@ -1,4 +1,4 @@
-# Creative Freelance Platfor
+# Creative Freelance
 
 AI-Powered Freelance Marketplace for Creative Professionals (Upwork meets Midjourney)
 
