@@ -10,7 +10,7 @@ A comprehensive platform  creative professionals with clients through AI-enhance
 ## 
 - User 
 - AI-assisted
-- Real-time 
+
 - Secure
 - Portfolio management
 - Mobile apps with push 
