@@ -11,7 +11,7 @@ A comprehensive platform  creative professionals with clients through AI-enhance
 - User authentication (OAuth + Email
 - AI-assisted content generation
 - Real-time collaboration & chat
-- Project management with milestones
+- Project management with
 - Secure payments & escrow
 - Portfolio management
 - Mobile apps with push 
