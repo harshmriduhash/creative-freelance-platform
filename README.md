@@ -1,5 +1,5 @@
 
-A comprehensive platform  creative professionals with clients through
+A comprehensive platform  creative professionals with clients
 
 ## Architecture
 - **Backend**: Node.js/Express + MongoDB
