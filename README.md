@@ -14,7 +14,7 @@ A comprehensive platform  creative professionals with clients through AI-enhance
 - Project management with milestones
 - Secure payments & escrow
 - Portfolio management
-- Mobile apps with push notifications
+- Mobile apps with push 
 
 ## Getting Started
 
