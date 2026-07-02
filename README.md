@@ -1,5 +1,5 @@
 
-A comprehensive platform  creative professionals with clients through AI-enhanced workflows.  human-AI hybrid collaboration for ,    
+A comprehensive platform  creative professionals with clients through AI-enhanced workflows.  human-AI hybrid collaboration fo
 
 ## Architecture
 - **Backend**: Node.js/Express + MongoDB
