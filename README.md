@@ -12,7 +12,7 @@ A comprehensive platform  creative professionals with clients through AI-enhance
 - AI-assisted content generation
 - Real-time collaboration & 
 - 
-- Secure payments
+- Secure
 - Portfolio management
 - Mobile apps with push 
 
