@@ -10,7 +10,7 @@ A comprehensive platform  creative professionals with clients through AI-enhance
 ## 
 - User authentication 
 - AI-assisted content generation
-- Real-time collaboration
+- Real-time 
 - 
 - Secure
 - Portfolio management
