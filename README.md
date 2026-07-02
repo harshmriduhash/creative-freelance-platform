@@ -8,7 +8,7 @@ A comprehensive platform  creative professionals with clients through AI-enhance
 - **AI Integration**: Claude API + OpenAI  
 
 ## 
-- User authentication (OAuth + Email)
+- User authentication (OAuth + Email
 - AI-assisted content generation
 - Real-time collaboration & chat
 - Project management with milestones
