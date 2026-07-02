@@ -1,5 +1,5 @@
 
-A comprehensive platform  creative 
+A comprehensive platform  
 
 ## Architecture
 - **Backend**: Node.js/Express + MongoDB
